@@ -43,6 +43,9 @@ public class frmPlanDeUsuario extends javax.swing.JInternalFrame {
         txtPrecio = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
 
+        setClosable(true);
+        setIconifiable(true);
+
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel3.setText("Planes");
 

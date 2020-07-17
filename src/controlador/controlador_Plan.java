@@ -3,18 +3,18 @@ package controlador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.DAO.DAO_Plan;
 import modelo.VO.VOPlan;
 import vista.frmPlanDeUsuario;
 
-public class controlador_Plan implements ActionListener {
+public class controlador_Plan extends mensaje implements ActionListener,IControlador {
     frmPlanDeUsuario view;
     DAO_Plan AccesoDatosDelObjetoPlan;
     VOPlan valoresDelObjetoPlan;
     
-    private void iniciar(){
+    @Override
+    public void iniciar(){
         view.setTitle("Plan");
         view.setLocale(null);
     }
@@ -46,7 +46,8 @@ public class controlador_Plan implements ActionListener {
     }
     
     
-    private void cargarDatosATabla(){
+    @Override
+    public void cargarDatosATabla(){
         DefaultTableModel modeloDeTabla = (DefaultTableModel) view.tablaTipoUsuario.getModel();
         modeloDeTabla.setRowCount(0);
         ArrayList<Object[]> informacion = AccesoDatosDelObjetoPlan.consultar();
@@ -61,11 +62,12 @@ public class controlador_Plan implements ActionListener {
         }
         view.tablaTipoUsuario.setModel(modeloDeTabla);
     }
-    private void insertar(){
-        valoresDelObjetoPlan = new VOPlan();
-        valoresDelObjetoPlan.setNombre(view.txtNombre.getText());
-        valoresDelObjetoPlan.setDescripcion(view.txtDescripcion.getText());
-        valoresDelObjetoPlan.setPrecio(Double.parseDouble(view.txtPrecio.getText()));
+    @Override
+    public void insertar(){
+        valoresDelObjetoPlan = VOPlan.Make(view.txtNombre.getText())
+                .setDescripcion(view.txtDescripcion.getText())
+                .setPrecio(Double.parseDouble(view.txtPrecio.getText()))
+                .Build();
         if(AccesoDatosDelObjetoPlan.insertar(valoresDelObjetoPlan)){
             mandaMensajeDeTexto("Insertado con éxito","Insertar");
             limpiar();
@@ -74,12 +76,13 @@ public class controlador_Plan implements ActionListener {
              mandaMensajeDeTexto("Ocurrio un error al insertar","Insertar");
         }
     }   
-    private void actualizar(){
-        valoresDelObjetoPlan = new VOPlan();
-        valoresDelObjetoPlan.setId(Integer.parseInt(view.txtClave.getText()));
-        valoresDelObjetoPlan.setNombre(view.txtNombre.getText());
-        valoresDelObjetoPlan.setDescripcion(view.txtDescripcion.getText());
-        valoresDelObjetoPlan.setPrecio(Double.parseDouble(view.txtPrecio.getText()));
+    @Override
+    public void actualizar(){
+        valoresDelObjetoPlan = VOPlan.Make(view.txtNombre.getText())
+                .setDescripcion(view.txtDescripcion.getText())
+                .setPrecio(Double.parseDouble(view.txtPrecio.getText()))
+                .setId(Integer.parseInt(view.txtClave.getText()))
+                .Build();
         if(AccesoDatosDelObjetoPlan.actualizar(valoresDelObjetoPlan)){
             mandaMensajeDeTexto("Actualizado con éxito","Actualizar");
             limpiar();
@@ -88,9 +91,11 @@ public class controlador_Plan implements ActionListener {
              mandaMensajeDeTexto("Ocurrio un error al actualizar","Actualizar");
         }
     }
-    private void eliminar(){
-        valoresDelObjetoPlan = new VOPlan();
-        valoresDelObjetoPlan.setId(Integer.parseInt(view.txtClave.getText()));
+    @Override
+    public void eliminar(){
+        valoresDelObjetoPlan = VOPlan.Make(view.txtNombre.getText())
+                .setId(Integer.parseInt(view.txtClave.getText()))
+                .Build();
         if(AccesoDatosDelObjetoPlan.eliminar(valoresDelObjetoPlan)){
             mandaMensajeDeTexto("Eliminado","Eliminado");
             limpiar();
@@ -99,19 +104,17 @@ public class controlador_Plan implements ActionListener {
              mandaMensajeDeTexto("Ocurrio un error al eliminar","Eliminado");
         }
     }
-    
-    private static void mandaMensajeDeTexto(String infoMessage, String titleBar){
-       JOptionPane.showMessageDialog(null, infoMessage,titleBar, JOptionPane.INFORMATION_MESSAGE);
-    }
-    
-    private void limpiar(){
+   
+    @Override
+    public void limpiar(){
         view.txtClave.setText(null);
         view.txtNombre.setText(null);
         view.txtDescripcion.setText(null);
         view.txtPrecio.setText(null);
     }
     
-    private boolean validar(){
+    @Override
+    public boolean validar(){
         if(view.txtClave.getText().isEmpty() || view.txtNombre.getText().isEmpty() || view.txtDescripcion.getText().isEmpty() 
                 || view.txtPrecio.getText().isEmpty()) return false;
         return true;

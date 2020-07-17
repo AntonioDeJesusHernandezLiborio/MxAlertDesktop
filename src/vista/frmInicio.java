@@ -45,17 +45,21 @@ public class frmInicio extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        editMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/carpeta.png"))); // NOI18N
         editMenu.setMnemonic('e');
         editMenu.setText("Datos");
 
+        btnTipoUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/usuario.png"))); // NOI18N
         btnTipoUsuario.setMnemonic('t');
         btnTipoUsuario.setText("Tipo Usuario");
         editMenu.add(btnTipoUsuario);
 
+        btnMetodoDePago.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/pagar.png"))); // NOI18N
         btnMetodoDePago.setMnemonic('y');
         btnMetodoDePago.setText("Metodo de Pago");
         editMenu.add(btnMetodoDePago);
 
+        btnPlanUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/las-tendencias-del-mercado.png"))); // NOI18N
         btnPlanUsuario.setMnemonic('p');
         btnPlanUsuario.setText("Plan de Usuario");
         editMenu.add(btnPlanUsuario);
@@ -112,7 +116,7 @@ public class frmInicio extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(escritorio, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 421, Short.MAX_VALUE)
+            .addComponent(escritorio, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 413, Short.MAX_VALUE)
         );
 
         pack();

@@ -3,18 +3,18 @@ package controlador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.DAO.DAO_TipoUsuario;
 import modelo.VO.VOTipoUsuario;
 import vista.frmTipoUsuario;
 
-public class controlador_TipoUsuario implements ActionListener{
+public class controlador_TipoUsuario extends mensaje implements ActionListener,IControlador{
     frmTipoUsuario view;
     DAO_TipoUsuario AccesoDatosDelObjetoTipoUsuario;
     VOTipoUsuario valoresDelObjetoTipoUsuario;
      
-    private void iniciar(){
+    @Override
+    public final void iniciar(){
         view.setTitle("Tipo Usuario");
         view.setLocale(null);
     }
@@ -34,25 +34,31 @@ public class controlador_TipoUsuario implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == view.btnAgregar){
-            if(view.txtNombre.getText() != "" )insertar();
+            if(!"".equals(view.txtNombre.getText()) ){
+                insertar();
+            }
             else mandaMensajeDeTexto("Llene los campos","Advertencia");
         }
         if(e.getSource() == view.btnModificar){
-            if(validar())actualizar();
+            if(validar()){
+                actualizar();
+            }
             else mandaMensajeDeTexto("Llene los campos","Advertencia");
         }
         if(e.getSource() == view.btnEliminar){
-            if(validar())eliminar();
+            if(validar()){
+                eliminar();
+            }
             else mandaMensajeDeTexto("Llene los campos","Advertencia");
         }
     }
-    
-    private boolean validar(){
+    @Override
+    public boolean validar(){
         if(view.txtClave.getText().isEmpty() || view.txtNombre.getText().isEmpty()) return false;
         return true;
     }
-    
-    private void cargarDatosATabla(){
+    @Override
+    public void cargarDatosATabla(){
         DefaultTableModel modeloDeTabla = (DefaultTableModel) view.tablaTipoUsuario.getModel();
         modeloDeTabla.setRowCount(0);
         ArrayList<Object[]> informacion = AccesoDatosDelObjetoTipoUsuario.consultar();
@@ -65,9 +71,10 @@ public class controlador_TipoUsuario implements ActionListener{
         }
         view.tablaTipoUsuario.setModel(modeloDeTabla);
     }
-    private void insertar(){
-        valoresDelObjetoTipoUsuario = new VOTipoUsuario();
-        valoresDelObjetoTipoUsuario.setNombre(view.txtNombre.getText());
+    
+    @Override
+    public void insertar(){
+        valoresDelObjetoTipoUsuario = VOTipoUsuario.Make(view.txtNombre.getText()).Build();
         if(AccesoDatosDelObjetoTipoUsuario.insertar(valoresDelObjetoTipoUsuario)){
             mandaMensajeDeTexto("Insertado con éxito","Insertar");
             limpiar();
@@ -75,11 +82,12 @@ public class controlador_TipoUsuario implements ActionListener{
         }else{
              mandaMensajeDeTexto("Ocurrio un error al insertar","Insertar");
         }
-    }   
-    private void actualizar(){
-        valoresDelObjetoTipoUsuario = new VOTipoUsuario();
-        valoresDelObjetoTipoUsuario.setId(Integer.parseInt(view.txtClave.getText()));
-        valoresDelObjetoTipoUsuario.setNombre(view.txtNombre.getText());
+    }
+    
+    @Override
+    public void actualizar(){
+         valoresDelObjetoTipoUsuario = VOTipoUsuario.Make(view.txtNombre.getText()).setId(Integer.parseInt(view.txtClave.getText()))
+                 .setNombre(view.txtNombre.getText()).Build();
         if(AccesoDatosDelObjetoTipoUsuario.actualizar(valoresDelObjetoTipoUsuario)){
             mandaMensajeDeTexto("Actualizado con éxito","Actualizar");
             limpiar();
@@ -88,9 +96,11 @@ public class controlador_TipoUsuario implements ActionListener{
              mandaMensajeDeTexto("Ocurrio un error al actualizar","Actualizar");
         }
     }
-    private void eliminar(){
-        valoresDelObjetoTipoUsuario = new VOTipoUsuario();
-        valoresDelObjetoTipoUsuario.setId(Integer.parseInt(view.txtClave.getText()));
+    
+    @Override
+    public void eliminar(){
+         valoresDelObjetoTipoUsuario = VOTipoUsuario.Make(view.txtNombre.getText()).setId(Integer.parseInt(view.txtClave.getText()))
+                 .Build();
         if(AccesoDatosDelObjetoTipoUsuario.eliminar(valoresDelObjetoTipoUsuario)){
             mandaMensajeDeTexto("Eliminado","Eliminado");
             limpiar();
@@ -100,11 +110,8 @@ public class controlador_TipoUsuario implements ActionListener{
         }
     }
     
-    private static void mandaMensajeDeTexto(String infoMessage, String titleBar)
-    {
-       JOptionPane.showMessageDialog(null, infoMessage,titleBar, JOptionPane.INFORMATION_MESSAGE);
-    }
-    private void limpiar(){
+    @Override
+    public void limpiar(){
         view.txtClave.setText(null);
         view.txtNombre.setText(null);
     }

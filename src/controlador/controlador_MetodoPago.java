@@ -3,20 +3,20 @@ package controlador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.DAO.DAO_MetodoPago;
 import modelo.VO.VOMetodoDePago;
 import vista.frmMetodoDePago;
 
-public class controlador_MetodoPago implements ActionListener{
+public class controlador_MetodoPago extends mensaje implements ActionListener,IControlador{
 
     frmMetodoDePago view;
     DAO_MetodoPago AccesoDatosDelObjetoMetodoDePago;
     VOMetodoDePago valoresDelObjetoMetodoDePago;
     
     
-    private void iniciar(){
+    @Override
+    public void iniciar(){
         view.setTitle("Metodo de pago");
         view.setLocale(null);
     }
@@ -34,7 +34,7 @@ public class controlador_MetodoPago implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == view.btnAgregar){
-            if(view.txtNombre.getText() != "" )insertar();
+            if(!"".equals(view.txtNombre.getText()) )insertar();
             else mandaMensajeDeTexto("Llene los campos","Advertencia");
         }
         if(e.getSource() == view.btnModificar){
@@ -47,7 +47,8 @@ public class controlador_MetodoPago implements ActionListener{
         }
     }
     
-    private void cargarDatosATabla(){
+    @Override
+    public void cargarDatosATabla(){
         DefaultTableModel modeloDeTabla = (DefaultTableModel) view.tablaMetodoDePago.getModel();
         modeloDeTabla.setRowCount(0);
         ArrayList<Object[]> informacion = AccesoDatosDelObjetoMetodoDePago.consultar();
@@ -60,9 +61,11 @@ public class controlador_MetodoPago implements ActionListener{
         }
         view.tablaMetodoDePago.setModel(modeloDeTabla);
     }
-    private void insertar(){
-        valoresDelObjetoMetodoDePago = new VOMetodoDePago();
-        valoresDelObjetoMetodoDePago.setNombre(view.txtNombre.getText());
+    @Override
+    public void insertar(){
+        valoresDelObjetoMetodoDePago = VOMetodoDePago.Make(view.txtNombre.getText())
+                .Build();
+        
         if(AccesoDatosDelObjetoMetodoDePago.insertar(valoresDelObjetoMetodoDePago)){
             mandaMensajeDeTexto("Insertado con éxito","Insertar");
             limpiar();
@@ -71,10 +74,11 @@ public class controlador_MetodoPago implements ActionListener{
              mandaMensajeDeTexto("Ocurrio un error al insertar","Insertar");
         }
     } 
-    private void actualizar(){
-        valoresDelObjetoMetodoDePago = new VOMetodoDePago();
-        valoresDelObjetoMetodoDePago.setId(Integer.parseInt(view.txtClave.getText()));
-        valoresDelObjetoMetodoDePago.setNombre(view.txtNombre.getText());
+    @Override
+    public void actualizar(){
+        valoresDelObjetoMetodoDePago = VOMetodoDePago.Make(view.txtNombre.getText())
+                .setId(Integer.parseInt(view.txtClave.getText()))
+                .Build();
         if(AccesoDatosDelObjetoMetodoDePago.actualizar(valoresDelObjetoMetodoDePago)){
             mandaMensajeDeTexto("Actualizado con éxito","Actualizar");
             limpiar();
@@ -83,9 +87,11 @@ public class controlador_MetodoPago implements ActionListener{
              mandaMensajeDeTexto("Ocurrio un error al actualizar","Actualizar");
         }
     }
-    private void eliminar(){
-        valoresDelObjetoMetodoDePago = new VOMetodoDePago();
-        valoresDelObjetoMetodoDePago.setId(Integer.parseInt(view.txtClave.getText()));
+    @Override
+    public void eliminar(){
+        valoresDelObjetoMetodoDePago = VOMetodoDePago.Make(view.txtNombre.getText())
+                .setId(Integer.parseInt(view.txtClave.getText()))
+                .Build();
         if(AccesoDatosDelObjetoMetodoDePago.eliminar(valoresDelObjetoMetodoDePago)){
             mandaMensajeDeTexto("Eliminado","Eliminado");
             limpiar();
@@ -95,14 +101,13 @@ public class controlador_MetodoPago implements ActionListener{
         }
     }
     
-    private static void mandaMensajeDeTexto(String infoMessage, String titleBar){
-       JOptionPane.showMessageDialog(null, infoMessage,titleBar, JOptionPane.INFORMATION_MESSAGE);
-    }
-    private void limpiar(){
+    @Override
+    public void limpiar(){
         view.txtClave.setText(null);
         view.txtNombre.setText(null);
     }
-    private boolean validar(){
+    @Override
+    public boolean validar(){
         if(view.txtClave.getText().isEmpty() || view.txtNombre.getText().isEmpty()) return false;
         return true;
     }

@@ -18,9 +18,9 @@ public class ConexionBaseDatos {
     private static String claveBaseDeDatos="123";
 
      private static String direccion = "jdbc:sqlserver://DESKTOP-P0QI2TJ\\SQLEXPRESS:1433;"
-                    + "databaseName=dbMXAlert;"
-                    + "user=practica;"
-                    + "password=123;";
+                    + "databaseName="+nombreBaseDeDatos+";"
+                    + "user="+nombreUsuario+";"
+                    + "password="+claveBaseDeDatos+";";
     
     
     private static Connection conexion;
@@ -38,7 +38,7 @@ public class ConexionBaseDatos {
             Logger.getLogger(ConexionBaseDatos.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    public static ConexionBaseDatos conexion()
+    public synchronized static ConexionBaseDatos conexion()
     {
         if (claseConexion == null) claseConexion = new ConexionBaseDatos();
         return claseConexion;

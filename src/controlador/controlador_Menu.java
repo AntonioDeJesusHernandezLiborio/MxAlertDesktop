@@ -3,7 +3,6 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JFrame;
 import vista.*;
 
 
@@ -13,10 +12,8 @@ public class controlador_Menu implements ActionListener{
     frmMetodoDePago formularioMetodoDePago;
     frmPlanDeUsuario formularioPlan;
 
-     
-    controlador_TipoUsuario controladorTipoUsuario;
-    controlador_MetodoPago controladorMetodoDePago;
-    controlador_Plan controladorPlan;
+    IControlador controlador;
+    
 
     public controlador_Menu(frmInicio inicio){
         this.inicio = inicio;
@@ -46,7 +43,7 @@ public class controlador_Menu implements ActionListener{
     private void abrirTipoUsuario(){
         if(formularioTipoUsuario==null) formularioTipoUsuario = new frmTipoUsuario();
         inicio.escritorio.add(formularioTipoUsuario);
-        controladorTipoUsuario = new controlador_TipoUsuario(formularioTipoUsuario);
+        controlador = new controlador_TipoUsuario(formularioTipoUsuario);
         formularioTipoUsuario.toFront();
         formularioTipoUsuario.show();
     }
@@ -54,7 +51,7 @@ public class controlador_Menu implements ActionListener{
     private void abrirMetodoDePago(){
         if(formularioMetodoDePago ==  null) formularioMetodoDePago = new frmMetodoDePago();
         inicio.escritorio.add(formularioMetodoDePago);
-        controladorMetodoDePago = new controlador_MetodoPago(formularioMetodoDePago);
+        controlador = new controlador_MetodoPago(formularioMetodoDePago);
         formularioMetodoDePago.toBack();
         formularioMetodoDePago.show();
     }
@@ -62,7 +59,7 @@ public class controlador_Menu implements ActionListener{
     private void abrirPlaUsuario(){
         if(formularioPlan ==  null) formularioPlan = new frmPlanDeUsuario();
         inicio.escritorio.add(formularioPlan);
-        controladorPlan = new controlador_Plan(formularioPlan);
+        controlador = new controlador_Plan(formularioPlan);
         formularioPlan.toBack();
         formularioPlan.show();
     }

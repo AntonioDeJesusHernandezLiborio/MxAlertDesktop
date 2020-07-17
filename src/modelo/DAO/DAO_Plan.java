@@ -9,9 +9,10 @@ import java.util.logging.Logger;
 import modelo.ConexionBaseDatos;
 import modelo.VO.VOPlan;
 
-public class DAO_Plan {
+public class DAO_Plan{
     ConexionBaseDatos conexion = ConexionBaseDatos.conexion();
     
+
     public ArrayList<Object[]> consultar(){
         
         ArrayList<Object[]> resgistros = new ArrayList<Object[]>();
@@ -35,6 +36,7 @@ public class DAO_Plan {
         }
         return resgistros;
     }
+
     public boolean insertar(VOPlan plan){
         PreparedStatement declaracionPreparada;
         
@@ -52,6 +54,7 @@ public class DAO_Plan {
         }
         return bandera;
     }
+
     public boolean actualizar(VOPlan plan){
         PreparedStatement declaracionPreparada;
         
@@ -70,6 +73,7 @@ public class DAO_Plan {
         }
         return bandera;
     }   
+ 
     public boolean eliminar(VOPlan plan){
         PreparedStatement declaracionPreparada;
         
@@ -85,4 +89,6 @@ public class DAO_Plan {
         }
         return bandera;
     }
+
+   
 }
