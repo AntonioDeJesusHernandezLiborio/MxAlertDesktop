@@ -5,7 +5,8 @@
         <group>
             <file>file:/C:/Users/ANTONIO-LIBORIO/Documents/NetBeansProjects/MxAlertDesktop/src/controlador/controlador_IniciarSesion.java</file>
             <file>file:/C:/Users/ANTONIO-LIBORIO/Documents/NetBeansProjects/MxAlertDesktop/src/modelo/DAO/DAO_IniciarSesion.java</file>
-            <file>file:/C:/Users/ANTONIO-LIBORIO/Documents/NetBeansProjects/MxAlertDesktop/src/controlador/controlador_TipoUsuario.java</file>
+            <file>file:/C:/Users/ANTONIO-LIBORIO/Documents/NetBeansProjects/MxAlertDesktop/src/modelo/ProxyServicioIniciarSesion.java</file>
+            <file>file:/C:/Users/ANTONIO-LIBORIO/Documents/NetBeansProjects/MxAlertDesktop/src/vista/frmInicio.java</file>
         </group>
     </open-files>
 </project-private>
