@@ -43,7 +43,7 @@ public class ConexionBaseDatos {
         if (claseConexion == null) claseConexion = new ConexionBaseDatos();
         return claseConexion;
     }
-    public Connection conectar(){      
+    public Connection conectar(){       
         return conexion;
     }  
     public void cerrarConexion(){

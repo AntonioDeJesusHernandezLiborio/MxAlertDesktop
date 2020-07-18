@@ -3,20 +3,21 @@ package modelo.DAO;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import modelo.ConexionBaseDatos;
+import modelo.IServicioIniciarSesion;
 import modelo.VO.VOInicioSesion;
 import org.apache.commons.codec.digest.DigestUtils;
 
-public class DAO_IniciarSesion {
+public class DAO_IniciarSesion implements IServicioIniciarSesion{
     
     ConexionBaseDatos conexion = ConexionBaseDatos.conexion();
     
     VOInicioSesion sesion;
     
-    public void consultar(VOInicioSesion DatosSesion){
+    public boolean consultar(VOInicioSesion DatosSesion){
+        boolean bandera = false;
         try {
             PreparedStatement declaracionPreparada;
             ResultSet resultado = null;
@@ -29,22 +30,17 @@ public class DAO_IniciarSesion {
                     .setTipoUsuario(resultado.getString("TipoUsuario"))
                     .setContraseñaEncriptada(resultado.getString("pw"))
                     .Build();
+                bandera = true;
             }
         } catch (SQLException ex) {
             Logger.getLogger(DAO_IniciarSesion.class.getName()).log(Level.SEVERE, null, ex);
         }
-      
+        return bandera;
     }
     
+    @Override
     public boolean verificarContraseña(String contraseña){
         String textoEncriptadoConSHA=DigestUtils.sha1Hex(contraseña); 
-        if(textoEncriptadoConSHA.equals(sesion.getContraseñaEncriptada()))return true;
-        else return false;
+        return textoEncriptadoConSHA.equals(sesion.getContraseñaEncriptada());
     }
-    
-    public boolean existeUsuario(){
-        if(sesion.getUsuario().equals("")) return false;
-        else return true;
-    }
-    
 }
