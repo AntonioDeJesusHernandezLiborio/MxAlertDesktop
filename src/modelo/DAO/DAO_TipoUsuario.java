@@ -1,6 +1,5 @@
 package modelo.DAO;
 
-import java.awt.List;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -18,7 +17,6 @@ public class DAO_TipoUsuario {
     ConexionBaseDatos conexion = ConexionBaseDatos.conexion();
    
     public ArrayList<Object[]> consultar(){
-        
         ArrayList<Object[]> resgistros = new ArrayList<Object[]>();
         Object[] informacion;
         try {
@@ -38,6 +36,7 @@ public class DAO_TipoUsuario {
         }
         return resgistros;
     }
+    
     public boolean insertar(VOTipoUsuario tipoUsuario){
         PreparedStatement declaracionPreparada;
         

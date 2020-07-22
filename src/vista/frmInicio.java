@@ -35,7 +35,7 @@ public class frmInicio extends javax.swing.JFrame {
         btnMetodoDePago = new javax.swing.JMenuItem();
         btnPlanUsuario = new javax.swing.JMenuItem();
         helpMenu = new javax.swing.JMenu();
-        contentMenuItem = new javax.swing.JMenuItem();
+        btnUsuarios = new javax.swing.JMenuItem();
         aboutMenuItem = new javax.swing.JMenuItem();
         fileMenu = new javax.swing.JMenu();
         openMenuItem = new javax.swing.JMenuItem();
@@ -67,11 +67,17 @@ public class frmInicio extends javax.swing.JFrame {
         menuBar.add(editMenu);
 
         helpMenu.setMnemonic('h');
-        helpMenu.setText("Proximamente");
+        helpMenu.setText("Administración");
 
-        contentMenuItem.setMnemonic('c');
-        contentMenuItem.setText("Contents");
-        helpMenu.add(contentMenuItem);
+        btnUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cliente.png"))); // NOI18N
+        btnUsuarios.setMnemonic('c');
+        btnUsuarios.setText("Usuarios");
+        btnUsuarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUsuariosActionPerformed(evt);
+            }
+        });
+        helpMenu.add(btnUsuarios);
 
         aboutMenuItem.setMnemonic('a');
         aboutMenuItem.setText("About");
@@ -126,6 +132,10 @@ public class frmInicio extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_exitMenuItemActionPerformed
 
+    private void btnUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsuariosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnUsuariosActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -136,7 +146,7 @@ public class frmInicio extends javax.swing.JFrame {
     public javax.swing.JMenuItem btnMetodoDePago;
     public javax.swing.JMenuItem btnPlanUsuario;
     public javax.swing.JMenuItem btnTipoUsuario;
-    public javax.swing.JMenuItem contentMenuItem;
+    public javax.swing.JMenuItem btnUsuarios;
     public javax.swing.JMenu editMenu;
     public javax.swing.JDesktopPane escritorio;
     public javax.swing.JMenuItem exitMenuItem;

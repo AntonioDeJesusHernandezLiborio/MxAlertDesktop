@@ -2,13 +2,15 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 import modelo.DAO.DAO_MetodoPago;
 import modelo.VO.VOMetodoDePago;
 import vista.frmMetodoDePago;
 
-public class controlador_MetodoPago extends mensaje implements ActionListener,IControlador{
+public class controlador_MetodoPago extends mensaje implements ActionListener,IControlador,MouseListener{
 
     frmMetodoDePago view;
     DAO_MetodoPago AccesoDatosDelObjetoMetodoDePago;
@@ -29,6 +31,9 @@ public class controlador_MetodoPago extends mensaje implements ActionListener,IC
         this.view.btnAgregar.addActionListener(this);
         this.view.btnEliminar.addActionListener(this);
         this.view.btnModificar.addActionListener(this);
+        this.view.btnLimpiar.addActionListener(this);
+        
+        this.view.tablaMetodoDePago.addMouseListener(this);
     }
     
     @Override
@@ -44,6 +49,9 @@ public class controlador_MetodoPago extends mensaje implements ActionListener,IC
         if(e.getSource() == view.btnEliminar){
             if(validar())eliminar();
             else mandaMensajeDeTexto("Llene los campos","Advertencia");
+        }
+        if(e.getSource() == view.btnLimpiar){
+            limpiar();
         }
     }
     
@@ -110,5 +118,39 @@ public class controlador_MetodoPago extends mensaje implements ActionListener,IC
     public boolean validar(){
         if(view.txtClave.getText().isEmpty() || view.txtNombre.getText().isEmpty()) return false;
         return true;
+    }
+    private void moverDatosAJtextBox(){
+        int n = view.tablaMetodoDePago.getSelectedRow();
+        if(n >= 0){
+            DefaultTableModel modelo = (DefaultTableModel) view.tablaMetodoDePago.getModel();
+            view.txtClave.setText(modelo.getValueAt(n, 0).toString()); 
+            view.txtNombre.setText(modelo.getValueAt(n, 1).toString());
+        } else {
+            mandaMensajeDeTexto("Selecione un registro para visualizar","Advertencia");
+        }
+    }
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+        if(e.getSource() == view.tablaMetodoDePago)
+        {
+            moverDatosAJtextBox();
+        }
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
     }
 }

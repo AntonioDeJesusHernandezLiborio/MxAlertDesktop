@@ -2,13 +2,15 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 import modelo.DAO.DAO_TipoUsuario;
 import modelo.VO.VOTipoUsuario;
 import vista.frmTipoUsuario;
 
-public class controlador_TipoUsuario extends mensaje implements ActionListener,IControlador{
+public class controlador_TipoUsuario extends mensaje implements ActionListener,IControlador,MouseListener{
     frmTipoUsuario view;
     DAO_TipoUsuario AccesoDatosDelObjetoTipoUsuario;
     VOTipoUsuario valoresDelObjetoTipoUsuario;
@@ -28,6 +30,9 @@ public class controlador_TipoUsuario extends mensaje implements ActionListener,I
         this.view.btnAgregar.addActionListener(this);
         this.view.btnEliminar.addActionListener(this);
         this.view.btnModificar.addActionListener(this);
+        this.view.btnLimpiar.addActionListener(this);
+        
+        this.view.tablaTipoUsuario.addMouseListener(this);
     }
     
     
@@ -50,6 +55,9 @@ public class controlador_TipoUsuario extends mensaje implements ActionListener,I
                 eliminar();
             }
             else mandaMensajeDeTexto("Llene los campos","Advertencia");
+        }
+        if(e.getSource() ==  view.btnLimpiar){
+            limpiar();
         }
     }
     @Override
@@ -114,6 +122,40 @@ public class controlador_TipoUsuario extends mensaje implements ActionListener,I
     public void limpiar(){
         view.txtClave.setText(null);
         view.txtNombre.setText(null);
+    }
+    
+    private void moverDatosAJtextBox(){
+        int n = view.tablaTipoUsuario.getSelectedRow();
+        if(n >= 0){
+            DefaultTableModel modelo = (DefaultTableModel) view.tablaTipoUsuario.getModel();
+            view.txtClave.setText(modelo.getValueAt(n, 0).toString()); 
+            view.txtNombre.setText(modelo.getValueAt(n, 1).toString());
+        } else {
+            mandaMensajeDeTexto("Selecione un registro para visualizar","Advertencia");
+        }
+    }
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+        if(e.getSource() == view.tablaTipoUsuario){
+            moverDatosAJtextBox();
+        }
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
     }
     
 }

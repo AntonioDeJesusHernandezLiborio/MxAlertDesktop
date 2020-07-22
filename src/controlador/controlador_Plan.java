@@ -2,13 +2,15 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 import modelo.DAO.DAO_Plan;
 import modelo.VO.VOPlan;
 import vista.frmPlanDeUsuario;
 
-public class controlador_Plan extends mensaje implements ActionListener,IControlador {
+public class controlador_Plan extends mensaje implements ActionListener,IControlador,MouseListener {
     frmPlanDeUsuario view;
     DAO_Plan AccesoDatosDelObjetoPlan;
     VOPlan valoresDelObjetoPlan;
@@ -27,6 +29,9 @@ public class controlador_Plan extends mensaje implements ActionListener,IControl
         this.view.btnAgregar.addActionListener(this);
         this.view.btnEliminar.addActionListener(this);
         this.view.btnModificar.addActionListener(this);
+        this.view.btnLimpiar.addActionListener(this);
+        
+        this.view.tablaTipoUsuario.addMouseListener(this);
     }
     
     @Override
@@ -42,6 +47,9 @@ public class controlador_Plan extends mensaje implements ActionListener,IControl
         if(e.getSource() == view.btnEliminar){
             if(validar())eliminar();
             else mandaMensajeDeTexto("Llene los campos","Advertencia");
+        }
+        if(e.getSource() == view.btnLimpiar){
+            limpiar();
         }
     }
     
@@ -112,7 +120,18 @@ public class controlador_Plan extends mensaje implements ActionListener,IControl
         view.txtDescripcion.setText(null);
         view.txtPrecio.setText(null);
     }
-    
+    private void moverDatosAJtextBox(){
+        int n = view.tablaTipoUsuario.getSelectedRow();
+        if(n >= 0){
+            DefaultTableModel modelo = (DefaultTableModel) view.tablaTipoUsuario.getModel();
+            view.txtClave.setText(modelo.getValueAt(n, 0).toString()); 
+            view.txtNombre.setText(modelo.getValueAt(n, 1).toString());
+            view.txtDescripcion.setText(modelo.getValueAt(n,2).toString());
+            view.txtPrecio.setText(modelo.getValueAt(n, 3).toString());
+        } else {
+            mandaMensajeDeTexto("Selecione un registro para visualizar","Advertencia");
+        }
+    }
     @Override
     public boolean validar(){
         if(view.txtClave.getText().isEmpty() || view.txtNombre.getText().isEmpty() || view.txtDescripcion.getText().isEmpty() 
@@ -124,5 +143,29 @@ public class controlador_Plan extends mensaje implements ActionListener,IControl
         if(view.txtNombre.getText().isEmpty() || view.txtDescripcion.getText().isEmpty() 
                 || view.txtPrecio.getText().isEmpty()) return false;
         return true;
+    }
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+        if(e.getSource() == view.tablaTipoUsuario){
+            moverDatosAJtextBox();
+        }
+    
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
     }
 }

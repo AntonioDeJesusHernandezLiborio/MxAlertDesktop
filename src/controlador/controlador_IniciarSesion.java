@@ -23,7 +23,7 @@ public class controlador_IniciarSesion  implements ActionListener{
         this.view = view;
         this.AccesoDatosDelObjetoInicioSesion = model;
         iniciar();
-        this.view.btnIniciarSesion.addActionListener(this);
+        this.view.btnIniciarSesion.addActionListener(this);  
     }
     
     @Override
