@@ -12,7 +12,10 @@ public class controlador_Menu implements ActionListener{
     frmMetodoDePago formularioMetodoDePago;
     frmPlanDeUsuario formularioPlan;
     frmUsuarios formularioUsuarios;
-
+    frmTipoDenuncia formularioTipoDenuncia;
+    frmProtocolos formularioProtocolos;
+    frmRecuperarContraseña formularioContraseña;
+    
     IControlador controlador;
     
 
@@ -22,6 +25,9 @@ public class controlador_Menu implements ActionListener{
         this.inicio.btnMetodoDePago.addActionListener(this);
         this.inicio.btnPlanUsuario.addActionListener(this);
         this.inicio.btnUsuarios.addActionListener(this);
+        this.inicio.btnTipoDenuncia.addActionListener(this);
+        this.inicio.btnProtocolo.addActionListener(this);
+        this.inicio.btnRestablecerPassword.addActionListener(this);
     }
   
     @Override
@@ -37,6 +43,15 @@ public class controlador_Menu implements ActionListener{
         }
         if(e.getSource() == inicio.btnUsuarios){
             abrirUsuarios();
+        }
+        if(e.getSource() == inicio.btnTipoDenuncia){
+            abrirTipoDenuncia();
+        }
+        if(e.getSource() == inicio.btnProtocolo){
+            abrirProtocolo();
+        }
+        if(e.getSource() == inicio.btnRestablecerPassword){
+            abrirRecuperarContraseña();
         }
     }
     
@@ -75,6 +90,27 @@ public class controlador_Menu implements ActionListener{
         controlador = new controlador_Usuarios(formularioUsuarios);
         formularioUsuarios.toFront();
         formularioUsuarios.show();
-        
+    }
+    private void abrirTipoDenuncia(){
+        if(formularioTipoDenuncia==null) formularioTipoDenuncia = new frmTipoDenuncia();
+        inicio.escritorio.add(formularioTipoDenuncia);
+        controlador = new controlador_TipoDenuncia(formularioTipoDenuncia);
+        formularioTipoDenuncia.toFront();
+        formularioTipoDenuncia.show();
+    }
+    
+    private void abrirProtocolo(){
+        if(formularioProtocolos ==  null) formularioProtocolos = new frmProtocolos();
+        inicio.escritorio.add(formularioProtocolos);
+        controlador = new controlador_Protocolo(formularioProtocolos);
+        formularioProtocolos.toFront();
+        formularioProtocolos.show();
+    }
+    private void abrirRecuperarContraseña(){
+        if(formularioContraseña ==  null) formularioContraseña = new frmRecuperarContraseña();
+        inicio.escritorio.add(formularioContraseña);
+        controlador = new controlador_recuperarContraseña(formularioContraseña);
+        formularioContraseña.toFront();
+        formularioContraseña.show();
     }
 }

@@ -30,7 +30,7 @@ public class frmPlanDeUsuario extends javax.swing.JInternalFrame {
         jLabel3 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        lblClave = new javax.swing.JLabel();
         txtClave = new javax.swing.JTextField();
         txtNombre = new javax.swing.JTextField();
         btnEliminar = new javax.swing.JButton();
@@ -55,7 +55,7 @@ public class frmPlanDeUsuario extends javax.swing.JInternalFrame {
 
         jLabel1.setText("Nombre");
 
-        jLabel2.setText("Clave");
+        lblClave.setText("Clave");
 
         btnEliminar.setText("Eliminar");
 
@@ -78,7 +78,7 @@ public class frmPlanDeUsuario extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblClave, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING))
@@ -102,7 +102,7 @@ public class frmPlanDeUsuario extends javax.swing.JInternalFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
+                    .addComponent(lblClave)
                     .addComponent(txtClave, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -183,12 +183,12 @@ public class frmPlanDeUsuario extends javax.swing.JInternalFrame {
     public javax.swing.JButton btnLimpiar;
     public javax.swing.JButton btnModificar;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
+    public javax.swing.JLabel lblClave;
     public javax.swing.JTable tablaTipoUsuario;
     public javax.swing.JTextField txtClave;
     public javax.swing.JTextField txtDescripcion;

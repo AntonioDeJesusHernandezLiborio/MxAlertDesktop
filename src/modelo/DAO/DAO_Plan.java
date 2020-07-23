@@ -89,6 +89,4 @@ public class DAO_Plan{
         }
         return bandera;
     }
-
-   
 }

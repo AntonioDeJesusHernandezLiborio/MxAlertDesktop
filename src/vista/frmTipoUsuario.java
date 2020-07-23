@@ -29,7 +29,7 @@ public class frmTipoUsuario extends javax.swing.JInternalFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        lblClave = new javax.swing.JLabel();
         txtClave = new javax.swing.JTextField();
         txtNombre = new javax.swing.JTextField();
         btnEliminar = new javax.swing.JButton();
@@ -48,7 +48,7 @@ public class frmTipoUsuario extends javax.swing.JInternalFrame {
 
         jLabel1.setText("Nombre");
 
-        jLabel2.setText("Clave");
+        lblClave.setText("Clave");
 
         btnEliminar.setText("Eliminar");
 
@@ -76,7 +76,7 @@ public class frmTipoUsuario extends javax.swing.JInternalFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
-                            .addComponent(jLabel2))
+                            .addComponent(lblClave))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtClave, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -88,7 +88,7 @@ public class frmTipoUsuario extends javax.swing.JInternalFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
+                    .addComponent(lblClave)
                     .addComponent(txtClave, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -158,10 +158,10 @@ public class frmTipoUsuario extends javax.swing.JInternalFrame {
     public javax.swing.JButton btnLimpiar;
     public javax.swing.JButton btnModificar;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
+    public javax.swing.JLabel lblClave;
     public javax.swing.JTable tablaTipoUsuario;
     public javax.swing.JTextField txtClave;
     public javax.swing.JTextField txtNombre;

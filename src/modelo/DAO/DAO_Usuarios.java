@@ -129,4 +129,21 @@ public class DAO_Usuarios {
         }
         return bandera;
     }
+    
+    public boolean restablecerContraseña(String usuario, String Contraseña){
+        PreparedStatement declaracionPreparada;
+        
+        boolean bandera = false;
+        try {
+            declaracionPreparada = conexion.conectar().prepareStatement("UPDATE [dbo].[tblCuenta] SET [cuent_password] = ? WHERE [cuent_nomUsuario] = ?");
+            declaracionPreparada.setString(1,Contraseña);
+            declaracionPreparada.setString(2,usuario);
+            if(!declaracionPreparada.execute()){
+                bandera= true;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DAO_Usuarios.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return bandera;
+    }   
 }

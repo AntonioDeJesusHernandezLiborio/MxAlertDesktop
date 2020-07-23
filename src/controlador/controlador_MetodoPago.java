@@ -34,6 +34,9 @@ public class controlador_MetodoPago extends mensaje implements ActionListener,IC
         this.view.btnLimpiar.addActionListener(this);
         
         this.view.tablaMetodoDePago.addMouseListener(this);
+        
+        view.lblClave.setVisible(false);
+        view.txtClave.setVisible(false);
     }
     
     @Override

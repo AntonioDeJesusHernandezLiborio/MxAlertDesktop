@@ -57,6 +57,4 @@ public class VOPlan {
         this.precio = precio;
         return this;
     }
-    
-    
 }

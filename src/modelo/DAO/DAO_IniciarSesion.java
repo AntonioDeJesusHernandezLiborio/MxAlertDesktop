@@ -16,6 +16,7 @@ public class DAO_IniciarSesion implements IServicioIniciarSesion{
     
     VOInicioSesion sesion;
     
+    @Override
     public boolean consultar(VOInicioSesion DatosSesion){
         boolean bandera = false;
         try {

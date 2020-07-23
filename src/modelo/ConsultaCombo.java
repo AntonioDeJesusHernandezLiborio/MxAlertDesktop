@@ -25,6 +25,19 @@ public class ConsultaCombo {
         }
         return  result;
     }
+    
+    public ResultSet consultarTipoDenuncia(){
+        ResultSet result = null;
+        try {
+            PreparedStatement declaracionPreparada;
+            declaracionPreparada = conexion.conectar().prepareStatement("SELECT [tipDen_idTipoDenuncia] as Id,[tipDen_nombre] as Nombre FROM [dbo].[tblTipoDenuncia]");
+            result = declaracionPreparada.executeQuery();
+           
+        } catch (SQLException ex) {
+            Logger.getLogger(ConsultaCombo.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return  result;
+    }
 }
 
 

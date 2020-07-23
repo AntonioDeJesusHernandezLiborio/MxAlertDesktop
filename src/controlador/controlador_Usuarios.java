@@ -14,6 +14,7 @@ import modelo.DAO.DAO_Usuarios;
 import modelo.ResultSetComboBoxModel;
 import modelo.ResultSetComboBoxModelObject;
 import modelo.VO.VOUsuarios;
+import org.apache.commons.codec.digest.DigestUtils;
 import vista.frmUsuarios;
 
 
@@ -121,6 +122,7 @@ public class controlador_Usuarios extends mensaje implements ActionListener,ICon
 
     @Override
     public void insertar() {
+        String encriptadoContraseña=DigestUtils.sha1Hex(view.txtContraseña.getText());
         ResultSetComboBoxModelObject model = (ResultSetComboBoxModelObject) view.cmbNivelUsuario.getModel().getSelectedItem();
         valoresDelObjetoUsuario = VOUsuarios.Make(view.txtNombre.getText())
                .setApellidoPaterno(view.txtAP.getText())
@@ -128,7 +130,7 @@ public class controlador_Usuarios extends mensaje implements ActionListener,ICon
                .setDireccion(view.txtDireccion.getText())
                .setTelefono(view.txtTelefono.getText())
                .setUsuario(view.txtUsuario.getText())
-               .setContraseña(view.txtContraseña.getText())
+               .setContraseña(encriptadoContraseña)
                .setNivelUsuario(model.getCodigo())
                .setEstado(view.rdbActivo.isSelected())
                .setCorreoElectonico(view.txtEmail.getText())

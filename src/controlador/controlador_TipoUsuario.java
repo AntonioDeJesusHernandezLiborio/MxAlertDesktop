@@ -31,8 +31,10 @@ public class controlador_TipoUsuario extends mensaje implements ActionListener,I
         this.view.btnEliminar.addActionListener(this);
         this.view.btnModificar.addActionListener(this);
         this.view.btnLimpiar.addActionListener(this);
-        
         this.view.tablaTipoUsuario.addMouseListener(this);
+        
+        view.lblClave.setVisible(false);
+        view.txtClave.setVisible(false);
     }
     
     

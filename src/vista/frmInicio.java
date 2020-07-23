@@ -34,9 +34,11 @@ public class frmInicio extends javax.swing.JFrame {
         btnTipoUsuario = new javax.swing.JMenuItem();
         btnMetodoDePago = new javax.swing.JMenuItem();
         btnPlanUsuario = new javax.swing.JMenuItem();
-        helpMenu = new javax.swing.JMenu();
+        btnTipoDenuncia = new javax.swing.JMenuItem();
+        btnProtocolo = new javax.swing.JMenuItem();
+        btnRestablecerContraseña = new javax.swing.JMenu();
         btnUsuarios = new javax.swing.JMenuItem();
-        aboutMenuItem = new javax.swing.JMenuItem();
+        btnRestablecerPassword = new javax.swing.JMenuItem();
         fileMenu = new javax.swing.JMenu();
         openMenuItem = new javax.swing.JMenuItem();
         saveMenuItem = new javax.swing.JMenuItem();
@@ -64,10 +66,23 @@ public class frmInicio extends javax.swing.JFrame {
         btnPlanUsuario.setText("Plan de Usuario");
         editMenu.add(btnPlanUsuario);
 
+        btnTipoDenuncia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/hoja.png"))); // NOI18N
+        btnTipoDenuncia.setText("Tipo de denuncia");
+        btnTipoDenuncia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTipoDenunciaActionPerformed(evt);
+            }
+        });
+        editMenu.add(btnTipoDenuncia);
+
+        btnProtocolo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ciencias-politicas.png"))); // NOI18N
+        btnProtocolo.setText("Protocolos");
+        editMenu.add(btnProtocolo);
+
         menuBar.add(editMenu);
 
-        helpMenu.setMnemonic('h');
-        helpMenu.setText("Administración");
+        btnRestablecerContraseña.setMnemonic('h');
+        btnRestablecerContraseña.setText("Administración");
 
         btnUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cliente.png"))); // NOI18N
         btnUsuarios.setMnemonic('c');
@@ -77,13 +92,14 @@ public class frmInicio extends javax.swing.JFrame {
                 btnUsuariosActionPerformed(evt);
             }
         });
-        helpMenu.add(btnUsuarios);
+        btnRestablecerContraseña.add(btnUsuarios);
 
-        aboutMenuItem.setMnemonic('a');
-        aboutMenuItem.setText("About");
-        helpMenu.add(aboutMenuItem);
+        btnRestablecerPassword.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/correo.png"))); // NOI18N
+        btnRestablecerPassword.setMnemonic('a');
+        btnRestablecerPassword.setText("Recuperar Contraseña");
+        btnRestablecerContraseña.add(btnRestablecerPassword);
 
-        menuBar.add(helpMenu);
+        menuBar.add(btnRestablecerContraseña);
 
         fileMenu.setMnemonic('f');
         fileMenu.setText("Proximamente");
@@ -136,22 +152,28 @@ public class frmInicio extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnUsuariosActionPerformed
 
+    private void btnTipoDenunciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTipoDenunciaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnTipoDenunciaActionPerformed
+
     /**
      * @param args the command line arguments
      */
  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JMenuItem aboutMenuItem;
     public javax.swing.JMenuItem btnMetodoDePago;
     public javax.swing.JMenuItem btnPlanUsuario;
+    public javax.swing.JMenuItem btnProtocolo;
+    public javax.swing.JMenu btnRestablecerContraseña;
+    public javax.swing.JMenuItem btnRestablecerPassword;
+    public javax.swing.JMenuItem btnTipoDenuncia;
     public javax.swing.JMenuItem btnTipoUsuario;
     public javax.swing.JMenuItem btnUsuarios;
     public javax.swing.JMenu editMenu;
     public javax.swing.JDesktopPane escritorio;
     public javax.swing.JMenuItem exitMenuItem;
     public javax.swing.JMenu fileMenu;
-    public javax.swing.JMenu helpMenu;
     public javax.swing.JMenuBar menuBar;
     public javax.swing.JMenuItem openMenuItem;
     public javax.swing.JMenuItem saveAsMenuItem;
