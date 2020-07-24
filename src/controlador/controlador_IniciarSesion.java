@@ -51,8 +51,9 @@ public class controlador_IniciarSesion  implements ActionListener{
     } 
     
     private void abrirMenu(){
+        VOInicioSesion sesionActual = AccesoDatosDelObjetoInicioSesion.sesion();
         frmInicio viewMenu = new frmInicio();
-        controlador_Menu controller = new controlador_Menu(viewMenu);
+        controlador_Menu controller = new controlador_Menu(viewMenu, sesionActual);
         controller.iniciar();
         viewMenu.setVisible(true);
         view.dispose();

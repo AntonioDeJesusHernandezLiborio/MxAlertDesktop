@@ -34,10 +34,10 @@ public class controlador_Protocolo extends mensaje implements ActionListener,ICo
         
         ocultarColumnas();
         cargarDatosATabla();
-        cargarComboNivelUsuario();
+        cargarComboTipoDenuncia();
         iniciar();
     }
-    public void cargarComboNivelUsuario(){
+    public void cargarComboTipoDenuncia(){
         try {
             ConsultaCombo combo = new ConsultaCombo();
             view.cmbDenuncia.setModel(new ResultSetComboBoxModel(combo.consultarTipoDenuncia(), "Id", "Nombre"));

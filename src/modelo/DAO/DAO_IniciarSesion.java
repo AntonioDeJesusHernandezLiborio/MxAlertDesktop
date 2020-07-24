@@ -44,4 +44,8 @@ public class DAO_IniciarSesion implements IServicioIniciarSesion{
         String textoEncriptadoConSHA=DigestUtils.sha1Hex(contraseña); 
         return textoEncriptadoConSHA.equals(sesion.getContraseñaEncriptada());
     }
+    
+    public VOInicioSesion sesion(){
+        return sesion;
+    }
 }

@@ -40,10 +40,7 @@ public class frmInicio extends javax.swing.JFrame {
         btnUsuarios = new javax.swing.JMenuItem();
         btnRestablecerPassword = new javax.swing.JMenuItem();
         fileMenu = new javax.swing.JMenu();
-        openMenuItem = new javax.swing.JMenuItem();
-        saveMenuItem = new javax.swing.JMenuItem();
-        saveAsMenuItem = new javax.swing.JMenuItem();
-        exitMenuItem = new javax.swing.JMenuItem();
+        btnDenuncias = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -81,6 +78,7 @@ public class frmInicio extends javax.swing.JFrame {
 
         menuBar.add(editMenu);
 
+        btnRestablecerContraseña.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/carpeta.png"))); // NOI18N
         btnRestablecerContraseña.setMnemonic('h');
         btnRestablecerContraseña.setText("Administración");
 
@@ -101,30 +99,14 @@ public class frmInicio extends javax.swing.JFrame {
 
         menuBar.add(btnRestablecerContraseña);
 
+        fileMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/carpeta.png"))); // NOI18N
         fileMenu.setMnemonic('f');
-        fileMenu.setText("Proximamente");
+        fileMenu.setText("Operativo");
 
-        openMenuItem.setMnemonic('o');
-        openMenuItem.setText("Open");
-        fileMenu.add(openMenuItem);
-
-        saveMenuItem.setMnemonic('s');
-        saveMenuItem.setText("Save");
-        fileMenu.add(saveMenuItem);
-
-        saveAsMenuItem.setMnemonic('a');
-        saveAsMenuItem.setText("Save As ...");
-        saveAsMenuItem.setDisplayedMnemonicIndex(5);
-        fileMenu.add(saveAsMenuItem);
-
-        exitMenuItem.setMnemonic('x');
-        exitMenuItem.setText("Exit");
-        exitMenuItem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                exitMenuItemActionPerformed(evt);
-            }
-        });
-        fileMenu.add(exitMenuItem);
+        btnDenuncias.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/problema.png"))); // NOI18N
+        btnDenuncias.setMnemonic('o');
+        btnDenuncias.setText("Denuncias");
+        fileMenu.add(btnDenuncias);
 
         menuBar.add(fileMenu);
 
@@ -144,10 +126,6 @@ public class frmInicio extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void exitMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitMenuItemActionPerformed
-        System.exit(0);
-    }//GEN-LAST:event_exitMenuItemActionPerformed
-
     private void btnUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsuariosActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnUsuariosActionPerformed
@@ -162,6 +140,7 @@ public class frmInicio extends javax.swing.JFrame {
  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JMenuItem btnDenuncias;
     public javax.swing.JMenuItem btnMetodoDePago;
     public javax.swing.JMenuItem btnPlanUsuario;
     public javax.swing.JMenuItem btnProtocolo;
@@ -172,12 +151,8 @@ public class frmInicio extends javax.swing.JFrame {
     public javax.swing.JMenuItem btnUsuarios;
     public javax.swing.JMenu editMenu;
     public javax.swing.JDesktopPane escritorio;
-    public javax.swing.JMenuItem exitMenuItem;
     public javax.swing.JMenu fileMenu;
     public javax.swing.JMenuBar menuBar;
-    public javax.swing.JMenuItem openMenuItem;
-    public javax.swing.JMenuItem saveAsMenuItem;
-    public javax.swing.JMenuItem saveMenuItem;
     // End of variables declaration//GEN-END:variables
 
 }

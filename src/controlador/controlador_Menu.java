@@ -3,6 +3,7 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import modelo.VO.VOInicioSesion;
 import vista.*;
 
 
@@ -15,12 +16,16 @@ public class controlador_Menu implements ActionListener{
     frmTipoDenuncia formularioTipoDenuncia;
     frmProtocolos formularioProtocolos;
     frmRecuperarContraseña formularioContraseña;
+    frmDenuncia formularioDenuncia;
+    
     
     IControlador controlador;
     
+    VOInicioSesion sesion;
 
-    public controlador_Menu(frmInicio inicio){
+    public controlador_Menu(frmInicio inicio, VOInicioSesion sesion){
         this.inicio = inicio;
+        this.sesion = sesion;
         this.inicio.btnTipoUsuario.addActionListener(this);
         this.inicio.btnMetodoDePago.addActionListener(this);
         this.inicio.btnPlanUsuario.addActionListener(this);
@@ -28,6 +33,7 @@ public class controlador_Menu implements ActionListener{
         this.inicio.btnTipoDenuncia.addActionListener(this);
         this.inicio.btnProtocolo.addActionListener(this);
         this.inicio.btnRestablecerPassword.addActionListener(this);
+        this.inicio.btnDenuncias.addActionListener(this);
     }
   
     @Override
@@ -53,10 +59,13 @@ public class controlador_Menu implements ActionListener{
         if(e.getSource() == inicio.btnRestablecerPassword){
             abrirRecuperarContraseña();
         }
+        if(e.getSource() == inicio.btnDenuncias){
+            abrirRecuperarDenuncia();
+        }
     }
     
     public void iniciar(){
-        inicio.setTitle("Tipo Usuario");
+        inicio.setTitle("Menu");
         inicio.setLocationRelativeTo(null);
     }
     
@@ -112,5 +121,13 @@ public class controlador_Menu implements ActionListener{
         controlador = new controlador_recuperarContraseña(formularioContraseña);
         formularioContraseña.toFront();
         formularioContraseña.show();
+    }
+    
+    private void abrirRecuperarDenuncia(){
+        if(formularioDenuncia ==  null) formularioDenuncia = new frmDenuncia();
+        inicio.escritorio.add(formularioDenuncia);
+        controlador = new controlador_Denuncias(formularioDenuncia, sesion);
+        formularioDenuncia.toFront();
+        formularioDenuncia.show();
     }
 }
