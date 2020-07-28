@@ -46,6 +46,8 @@ public class frmInicio extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        escritorio.setForeground(new java.awt.Color(0, 204, 204));
+
         editMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/carpeta.png"))); // NOI18N
         editMenu.setMnemonic('e');
         editMenu.setText("Datos");

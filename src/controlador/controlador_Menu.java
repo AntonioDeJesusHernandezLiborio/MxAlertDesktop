@@ -36,6 +36,9 @@ public class controlador_Menu implements ActionListener{
         this.inicio.btnRestablecerPassword.addActionListener(this);
         this.inicio.btnDenuncias.addActionListener(this);
         this.inicio.btnRespaldo.addActionListener(this);
+        
+        inicio.escritorio.setBorder(new ImagenFondo());
+        inicio.setExtendedState(inicio.MAXIMIZED_BOTH);
     }
   
     @Override
