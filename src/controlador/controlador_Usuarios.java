@@ -49,7 +49,12 @@ public class controlador_Usuarios extends mensaje implements ActionListener,ICon
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == view.btnAgregar){
             if(validarInsertar()){
-                insertar();
+                if(validarCorreo()){
+                    if(validarContraseña()){
+                        insertar();
+                    }else mandaMensajeDeTexto("La contraseña debe tener minuto 8 caracteres \n"
+                            + "1 mayuscula, minuscula, caracter especial y sin espacios","Advertencia");
+                }else mandaMensajeDeTexto("El correo no es valido","Advertencia");
             }else  mandaMensajeDeTexto("Llene los campos","Advertencia");
         }
         if(e.getSource() == view.btnModificar){
@@ -95,7 +100,14 @@ public class controlador_Usuarios extends mensaje implements ActionListener,ICon
                 || !"".equals(view.txtTelefono.getText()) || !"".equals(view.txtUsuario.getText()) 
                 || !"".equals(view.txtContraseña.getText()) || !"".equals(view.txtEmail.getText());
     }
-
+    public boolean validarCorreo(){
+        return validarCorreo(view.txtEmail.getText());
+    }
+    
+    public boolean validarContraseña(){
+        return validarContraseña(view.txtContraseña.getText());
+    }
+    
     @Override
     public void cargarDatosATabla() {
         DefaultTableModel modeloDeTabla = (DefaultTableModel) view.tablaTipoUsuario.getModel();

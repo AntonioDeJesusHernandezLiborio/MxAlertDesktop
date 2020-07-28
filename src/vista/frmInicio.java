@@ -41,6 +41,8 @@ public class frmInicio extends javax.swing.JFrame {
         btnRestablecerPassword = new javax.swing.JMenuItem();
         fileMenu = new javax.swing.JMenu();
         btnDenuncias = new javax.swing.JMenuItem();
+        btnRespaldowadwa = new javax.swing.JMenu();
+        btnRespaldo = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -110,6 +112,15 @@ public class frmInicio extends javax.swing.JFrame {
 
         menuBar.add(fileMenu);
 
+        btnRespaldowadwa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/seo-y-web.png"))); // NOI18N
+        btnRespaldowadwa.setText("Respaldo");
+
+        btnRespaldo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/seo-y-web.png"))); // NOI18N
+        btnRespaldo.setText("Respaldo");
+        btnRespaldowadwa.add(btnRespaldo);
+
+        menuBar.add(btnRespaldowadwa);
+
         setJMenuBar(menuBar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -120,7 +131,7 @@ public class frmInicio extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(escritorio, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 413, Short.MAX_VALUE)
+            .addComponent(escritorio, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 405, Short.MAX_VALUE)
         );
 
         pack();
@@ -144,6 +155,8 @@ public class frmInicio extends javax.swing.JFrame {
     public javax.swing.JMenuItem btnMetodoDePago;
     public javax.swing.JMenuItem btnPlanUsuario;
     public javax.swing.JMenuItem btnProtocolo;
+    public javax.swing.JMenuItem btnRespaldo;
+    public javax.swing.JMenu btnRespaldowadwa;
     public javax.swing.JMenu btnRestablecerContraseña;
     public javax.swing.JMenuItem btnRestablecerPassword;
     public javax.swing.JMenuItem btnTipoDenuncia;

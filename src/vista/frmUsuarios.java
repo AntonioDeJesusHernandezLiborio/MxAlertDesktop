@@ -47,13 +47,13 @@ public class frmUsuarios extends javax.swing.JInternalFrame {
         txtDireccion = new javax.swing.JTextField();
         txtUsuario = new javax.swing.JTextField();
         txtTelefono = new javax.swing.JTextField();
-        txtContraseña = new javax.swing.JTextField();
         cmbNivelUsuario = new javax.swing.JComboBox<>();
         jLabel19 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
         txtEmail = new javax.swing.JTextField();
         rdbActivo = new javax.swing.JRadioButton();
         btnLimpiar = new javax.swing.JButton();
+        txtContraseña = new javax.swing.JPasswordField();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tablaTipoUsuario = new javax.swing.JTable();
@@ -121,6 +121,7 @@ public class frmUsuarios extends javax.swing.JInternalFrame {
                     .addComponent(txtDireccion, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(rdbActivo)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(txtNombre, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(txtAP, javax.swing.GroupLayout.Alignment.LEADING)
@@ -128,10 +129,10 @@ public class frmUsuarios extends javax.swing.JInternalFrame {
                                 .addComponent(txtAM, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(txtUsuario, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(rdbActivo))
-                        .addGap(0, 27, Short.MAX_VALUE))))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(txtContraseña, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(txtEmail, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 198, Short.MAX_VALUE)))
+                        .addContainerGap(27, Short.MAX_VALUE))))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -189,7 +190,7 @@ public class frmUsuarios extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(11, 11, 11)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(rdbActivo))
@@ -285,7 +286,7 @@ public class frmUsuarios extends javax.swing.JInternalFrame {
     public javax.swing.JTable tablaTipoUsuario;
     public javax.swing.JTextField txtAM;
     public javax.swing.JTextField txtAP;
-    public javax.swing.JTextField txtContraseña;
+    public javax.swing.JPasswordField txtContraseña;
     public javax.swing.JTextField txtDireccion;
     public javax.swing.JTextField txtEmail;
     public javax.swing.JTextField txtId;

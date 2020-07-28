@@ -5,8 +5,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.math.BigInteger;
-import java.security.SecureRandom;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 import modelo.recuperar_contraseña;
@@ -52,8 +50,8 @@ public class controlador_recuperarContraseña  extends mensaje implements Action
         this.nuevaContraseña = generarTextoAleatorio();
         if(recuperar.reseteoContraseña(view.txtUsuario.getText(), nuevaContraseña)){
             String destinatario =  view.txtCorreo.getText();
-            String asunto = "Reseteo de contraseña";
-            String cuerpo = " Hola"+" "+ this.Nombre + " "+this.aP+" "+this.aM+" la nueva contraseña de su cuenta de RegionalSoft es: " + this.nuevaContraseña;
+            String asunto = "Restablecer contraseña";
+            String cuerpo = "Hola"+" "+ this.Nombre + " "+this.aP+" "+this.aM+" la nueva contraseña de su cuenta de RegionalSoft es: " + this.nuevaContraseña;
             return recuperar.enviarConGMail(destinatario, asunto, cuerpo);
         }else return false;
     }
@@ -126,11 +124,7 @@ public class controlador_recuperarContraseña  extends mensaje implements Action
         }
     }
     
-    public static String generarTextoAleatorio() {
-        SecureRandom random = new SecureRandom();
-        String text = new BigInteger(40, random).toString(32);
-        return text;
-    }
+   
     
     @Override
     public void insertar() {}

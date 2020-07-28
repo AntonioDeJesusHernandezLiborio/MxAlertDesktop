@@ -15,6 +15,7 @@ public class MxAlertDesktop {
         controlador_IniciarSesion controller = new controlador_IniciarSesion(view,model);
         controller.iniciar();
         view.setVisible(true);
+        
     }
     
 }

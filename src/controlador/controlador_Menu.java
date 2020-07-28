@@ -17,6 +17,7 @@ public class controlador_Menu implements ActionListener{
     frmProtocolos formularioProtocolos;
     frmRecuperarContraseña formularioContraseña;
     frmDenuncia formularioDenuncia;
+    frmRespaldo formularioRespaldo;
     
     
     IControlador controlador;
@@ -34,6 +35,7 @@ public class controlador_Menu implements ActionListener{
         this.inicio.btnProtocolo.addActionListener(this);
         this.inicio.btnRestablecerPassword.addActionListener(this);
         this.inicio.btnDenuncias.addActionListener(this);
+        this.inicio.btnRespaldo.addActionListener(this);
     }
   
     @Override
@@ -61,6 +63,9 @@ public class controlador_Menu implements ActionListener{
         }
         if(e.getSource() == inicio.btnDenuncias){
             abrirRecuperarDenuncia();
+        }
+        if(e.getSource() == inicio.btnRespaldo){
+            abrirRespaldo();
         }
     }
     
@@ -129,5 +134,13 @@ public class controlador_Menu implements ActionListener{
         controlador = new controlador_Denuncias(formularioDenuncia, sesion);
         formularioDenuncia.toFront();
         formularioDenuncia.show();
+    }
+    
+    private void abrirRespaldo(){
+        if(formularioRespaldo ==  null) formularioRespaldo = new frmRespaldo();
+        inicio.escritorio.add(formularioRespaldo);
+        controlador = new controlador_Respaldo(formularioRespaldo, sesion);
+        formularioRespaldo.toFront();
+        formularioRespaldo.show();
     }
 }

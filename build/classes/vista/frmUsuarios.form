@@ -86,6 +86,7 @@
                       <Component id="txtDireccion" alignment="1" max="32767" attributes="0"/>
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="rdbActivo" min="-2" max="-2" attributes="0"/>
                               <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
                                   <Component id="txtNombre" alignment="0" max="32767" attributes="0"/>
                                   <Component id="txtAP" alignment="0" max="32767" attributes="0"/>
@@ -94,11 +95,12 @@
                                   <Component id="txtUsuario" alignment="0" min="-2" pref="179" max="-2" attributes="0"/>
                               </Group>
                               <Component id="txtTelefono" min="-2" pref="141" max="-2" attributes="0"/>
-                              <Component id="txtEmail" alignment="0" min="-2" pref="198" max="-2" attributes="0"/>
-                              <Component id="txtContraseña" min="-2" pref="119" max="-2" attributes="0"/>
-                              <Component id="rdbActivo" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="txtContraseña" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txtEmail" alignment="0" pref="198" max="32767" attributes="0"/>
+                              </Group>
                           </Group>
-                          <EmptySpace min="0" pref="27" max="32767" attributes="0"/>
+                          <EmptySpace pref="27" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -173,7 +175,7 @@
                       <Component id="jLabel17" alignment="3" min="-2" pref="16" max="-2" attributes="0"/>
                       <Component id="txtContraseña" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel19" alignment="3" min="-2" pref="16" max="-2" attributes="0"/>
                       <Component id="rdbActivo" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -306,11 +308,6 @@
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtContrase&#xf1;a">
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-          </AuxValues>
-        </Component>
         <Component class="javax.swing.JComboBox" name="cmbNivelUsuario">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
@@ -354,6 +351,11 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Limpiar"/>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JPasswordField" name="txtContrase&#xf1;a">
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
           </AuxValues>
