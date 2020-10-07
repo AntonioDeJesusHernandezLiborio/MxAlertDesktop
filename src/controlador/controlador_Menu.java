@@ -20,6 +20,8 @@ public class controlador_Menu implements ActionListener{
     frmRespaldo formularioRespaldo;
 
     //PRUEBA DE CONTRO DE GIT Y GITHUB
+
+    String vawbdbawjjhd;
     
     
     IControlador controlador;
